@@ -1,51 +1,55 @@
-[中文](./README.zh-CN.md)
+[English](./README.md)
 
 # infocard-skills
 
-Open-source agent skills for editorial-style information cards.
+面向信息卡生成的开源 Agent Skills 仓库。
 
-`infocard-skills` is a small repository of installable skill packages for agents. The current package, `editorial-card-screenshot`, turns source material into screenshot-ready HTML cards and optional PNG outputs.
+`infocard-skills` 是一个小而专注的技能仓库，用来给 Agent 安装可复用的 skill package。当前提供的 `editorial-card-screenshot` 可以把原始内容转成适合截图的 HTML 信息卡，并在需要时输出 PNG。
 
-## Install
+## 安装什么
 
-Install the full skill package, not a single file:
+当前应该安装的 skill package 是：
 
 - [`skills/editorial-card-screenshot`](./skills/editorial-card-screenshot)
 
-Copy or install the entire directory into your agent's skills location. Keep these files together:
+请安装整个目录，而不是只拿某一个文件。
+
+通常需要把下面这些内容一起放进你的 Agent skills 目录：
 
 - `SKILL.md`
 - `assets/`
 - `references/`
 - `scripts/`
-- `agents/` when supported by the host
+- `agents/`，如果你的宿主支持这类元数据
 
-## Verify
+## 如何验证安装成功
 
-After installation, test with one of these prompts:
+安装完成后，可以直接给 Agent 发送下面任一条自然语言请求：
 
 - `Use $editorial-card-screenshot to turn these notes into an editorial info card.`
 - `Use $editorial-card-screenshot to make a 3:4 information card from this text.`
 - `Use $editorial-card-screenshot and give me both the HTML and PNG.`
 
-## Usage
+如果安装成功，Agent 应该能识别这个 skill，并生成可截图的 HTML；在你要求图片输出时，还会进一步生成 PNG。
 
-Typical requests:
+## 使用示例
+
+常见自然语言调用方式：
 
 - `Turn this article into an editorial information card.`
 - `Make a portrait 3:4 info card from these notes.`
 - `Summarize this content as a dense magazine-style card.`
 - `Create the HTML only. I do not need the image.`
 
-## Render Requirement
+## PNG 渲染要求
 
-For PNG capture, the current helper expects local Google Chrome at:
+如果要输出 PNG，当前辅助脚本默认依赖本地 Google Chrome：
 
 ```text
 /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 ```
 
-## Repository
+## 仓库结构
 
 ```text
 skills/
@@ -54,7 +58,7 @@ docs/
 examples/
 ```
 
-## Docs
+## 相关文档
 
 - [`docs/agent-usage.md`](./docs/agent-usage.md)
 - [`docs/editorial-card-prompt.md`](./docs/editorial-card-prompt.md)
