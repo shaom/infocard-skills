@@ -2,15 +2,15 @@
 
 ## One-Line Description
 
-Open-source skills and tooling for generating editorial-style information cards.
+Open-source agent skills and tooling for generating editorial-style information cards.
 
 ## Short Description
 
-`infocard-skills` is a focused repository for reusable information-card workflows. It packages prompts, templates, scripts, and agent-ready skill definitions for turning source material into structured HTML cards and ratio-specific screenshots.
+`infocard-skills` is a focused repository for reusable agent skills for information-card workflows. It packages prompts, templates, references, helper scripts, and agent-ready skill definitions for turning source material into structured HTML cards and ratio-specific screenshots.
 
 ## Longer Description
 
-This project is designed around a simple goal: make information cards look intentional, dense, and readable. Instead of treating cards as generic social graphics, the repository emphasizes editorial composition, hierarchy, typography, and screenshot-first output pipelines.
+This project is designed around a simple goal: make information cards look intentional, dense, and readable. Instead of treating cards as generic social graphics, the repository emphasizes editorial composition, hierarchy, typography, and screenshot-first output pipelines inside agent-driven workflows.
 
 The current repository centers on one production-oriented skill, `editorial-card-screenshot`, which combines:
 
@@ -24,7 +24,7 @@ Over time, the repository can grow into a broader collection of information-card
 
 ## Suggested GitHub About Text
 
-Open-source skills, prompts, and tooling for editorial-style information cards.
+Open-source agent skills, prompts, and tooling for editorial-style information cards.
 
 ## Suggested Social Preview / Intro Copy
 

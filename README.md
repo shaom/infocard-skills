@@ -1,12 +1,12 @@
 # infocard-skills
 
-Open-source skills, prompts, and tooling for editorial-style information cards.
+Open-source agent skills for editorial-style information cards.
 
-`infocard-skills` is a focused repository for reusable information-card workflows: turning source material into structured HTML cards, then rendering those cards into fixed-ratio visual assets.
+`infocard-skills` is a focused repository for reusable agent skills that turn source material into structured HTML cards and fixed-ratio card assets.
 
 ## Project Summary
 
-This project is for people who want information cards to feel designed, not auto-generated. The repository combines prompt design, skill packaging, capture scripts, ratio presets, and starter templates into a workflow that can be reused across agents and content systems.
+This project is for people who want information cards to feel designed, not auto-generated. The repository packages prompts, skill definitions, templates, references, and rendering helpers so agents can handle card-generation tasks through natural-language requests.
 
 Current emphasis:
 
@@ -15,6 +15,24 @@ Current emphasis:
 - screenshot-first outputs for fixed visual ratios
 - reusable assets for agent-driven card generation
 
+## Agent-First Usage
+
+This repository is intended to be used from coding agents such as Codex-style environments and other skill-based agents.
+
+The primary interaction model is:
+
+1. install or load the skill into the agent environment
+2. ask for the card in natural language
+3. let the agent use the packaged prompt rules, templates, and helper scripts internally
+
+Typical requests:
+
+- "Turn this article into an editorial info card."
+- "Make a 3:4 information card from these notes."
+- "Use the editorial-card-screenshot skill and give me both HTML and PNG."
+
+The shell script in this repository is an implementation detail used by the skill when image capture is needed. It is not the main product surface.
+
 ## Included Today
 
 ### `editorial-card-screenshot`
@@ -22,6 +40,12 @@ Current emphasis:
 Path: [`skills/editorial-card-screenshot`](./skills/editorial-card-screenshot)
 
 This skill generates compact HTML information cards and captures them as screenshots in supported aspect ratios.
+
+The intended flow is agent-driven:
+
+- the user provides text, notes, or source material in natural language
+- the agent applies the skill contract in [`skills/editorial-card-screenshot/SKILL.md`](./skills/editorial-card-screenshot/SKILL.md)
+- the agent optionally calls the bundled screenshot helper when PNG output is requested
 
 Included assets:
 
@@ -56,28 +80,20 @@ Included assets:
 └── LICENSE
 ```
 
-## Quick Start
+## Skill Contents
 
-Render a screenshot from a local HTML card:
+Each skill package may include:
 
-```bash
-./skills/editorial-card-screenshot/scripts/capture_card.sh input.html output.png 3:4
-```
+- a `SKILL.md` contract for agent behavior
+- agent metadata or descriptors
+- templates and prompt references
+- helper scripts used internally by the agent
 
-Example:
+For `editorial-card-screenshot`, supported ratio presets are listed in [`skills/editorial-card-screenshot/references/ratios.md`](./skills/editorial-card-screenshot/references/ratios.md).
 
-```bash
-./skills/editorial-card-screenshot/scripts/capture_card.sh \
-  ./skills/editorial-card-screenshot/assets/card-template.html \
-  /tmp/editorial-card.png \
-  3:4
-```
+## Rendering Requirements
 
-Supported ratio presets are listed in [`skills/editorial-card-screenshot/references/ratios.md`](./skills/editorial-card-screenshot/references/ratios.md).
-
-## Requirements
-
-The capture workflow currently expects local Google Chrome at:
+When a skill needs screenshot rendering, the current helper expects local Google Chrome at:
 
 ```text
 /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
@@ -86,6 +102,7 @@ The capture workflow currently expects local Google Chrome at:
 ## Documentation
 
 - project overview and reusable repository copy: [`docs/project-overview.md`](./docs/project-overview.md)
+- agent-facing usage notes: [`docs/agent-usage.md`](./docs/agent-usage.md)
 - GitHub About, topics, and social copy: [`docs/github-metadata.md`](./docs/github-metadata.md)
 - canonical editorial prompt: [`docs/editorial-card-prompt.md`](./docs/editorial-card-prompt.md)
 
