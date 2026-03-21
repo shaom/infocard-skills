@@ -1,8 +1,8 @@
-# infocard-video-skills
+# infocard-skills
 
-Open-source skills for turning source material into information-card assets and, later, Remotion-based video assets.
+Open-source skills for turning source material into editorial-style information-card assets.
 
-This repository is meant to collect reusable skills, prompts, scripts, and templates for visual content workflows. The current focus is editorial-style HTML information cards that can be rendered to fixed-ratio PNGs.
+This repository collects reusable skills, prompts, scripts, and templates for information-card workflows. The current focus is HTML info cards that can be rendered to fixed-ratio PNGs.
 
 ## What is in this repo
 
@@ -76,8 +76,7 @@ The screenshot workflow currently expects local Google Chrome at:
 Planned additions for this repository:
 
 - more information-card skills and variants
-- Remotion-oriented video skills
-- shared prompts and templates for asset pipelines
+- shared prompts and templates for card workflows
 - better examples and sample outputs
 
 ## Contributing
@@ -88,7 +87,7 @@ Good contributions include:
 
 - new skills with clear scope and documentation
 - improvements to prompts, templates, and capture scripts
-- better examples for card and video workflows
+- better examples for card workflows
 - fixes that improve portability or output quality
 
 ## License
