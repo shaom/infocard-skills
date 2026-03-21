@@ -86,6 +86,7 @@ The capture workflow currently expects local Google Chrome at:
 ## Documentation
 
 - project overview and reusable repository copy: [`docs/project-overview.md`](./docs/project-overview.md)
+- GitHub About, topics, and social copy: [`docs/github-metadata.md`](./docs/github-metadata.md)
 - canonical editorial prompt: [`docs/editorial-card-prompt.md`](./docs/editorial-card-prompt.md)
 
 ## Roadmap
