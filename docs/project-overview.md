@@ -2,7 +2,7 @@
 
 ## One-Line Description
 
-Open-source agent skills and tooling for generating editorial-style information cards.
+Open-source agent skills for generating editorial-style information cards from natural-language input.
 
 ## Short Description
 
@@ -24,7 +24,7 @@ Over time, the repository can grow into a broader collection of information-card
 
 ## Suggested GitHub About Text
 
-Open-source agent skills, prompts, and tooling for editorial-style information cards.
+Open-source agent skills for generating editorial-style information cards from natural-language input.
 
 ## Suggested Social Preview / Intro Copy
 

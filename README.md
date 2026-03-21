@@ -2,7 +2,7 @@
 
 # infocard-skills
 
-Open-source agent skills for editorial-style information cards.
+Open-source agent skills for generating editorial-style information cards from natural-language input.
 
 ![infocard-skills header](./docs/assets/project-header-3x1.png)
 
