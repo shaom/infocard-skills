@@ -1,0 +1,4 @@
+interface:
+  display_name: "Editorial Card Screenshot"
+  short_description: "HTML cards with ratio screenshots"
+  default_prompt: "Use $editorial-card-screenshot to turn my text into an editorial HTML card and capture it in a supported ratio."
