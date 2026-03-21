@@ -4,6 +4,8 @@
 
 面向信息卡生成的开源 Agent Skills 仓库。
 
+![infocard-skills header](./docs/assets/project-header-3x1.png)
+
 `infocard-skills` 是一个小而专注的技能仓库，用来给 Agent 安装可复用的 skill package。当前提供的 `editorial-card-screenshot` 可以把原始内容转成适合截图的 HTML 信息卡，并在需要时输出 PNG。
 
 ## 安装什么

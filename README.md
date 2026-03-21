@@ -4,6 +4,8 @@
 
 Open-source agent skills for editorial-style information cards.
 
+![infocard-skills header](./docs/assets/project-header-3x1.png)
+
 `infocard-skills` is a small repository of installable skill packages for agents. The current package, `editorial-card-screenshot`, turns source material into screenshot-ready HTML cards and optional PNG outputs.
 
 ## Install

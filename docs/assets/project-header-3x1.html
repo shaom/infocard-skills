@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>infocard-skills Header</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=Oswald:wght@500;700&family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f3efe6;
+        --paper-deep: #e6dece;
+        --ink: #111111;
+        --muted: #5f5a52;
+        --line: rgba(17, 17, 17, 0.18);
+        --tint: rgba(17, 17, 17, 0.045);
+        --accent: #b45f2d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(circle at top left, rgba(180, 95, 45, 0.11), transparent 30%),
+          linear-gradient(135deg, var(--paper) 0%, #f7f4ee 52%, var(--paper-deep) 100%);
+      }
+
+      body {
+        font-family: "Inter", "Noto Sans SC", sans-serif;
+        color: var(--ink);
+      }
+
+      .frame {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background-image:
+          radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.8) 0.5px, transparent 0.9px),
+          radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.7) 0.45px, transparent 0.8px);
+        background-size: 9px 9px, 13px 13px;
+        pointer-events: none;
+      }
+
+      .grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 48px;
+        height: 100%;
+        padding: 48px 68px 44px;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+      }
+
+      .meta-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .meta-row::before {
+        content: "";
+        width: 84px;
+        height: 6px;
+        background: var(--ink);
+      }
+
+      .headline-wrap {
+        margin-top: 12px;
+      }
+
+      .title {
+        margin: 0;
+        font-family: "Noto Serif SC", serif;
+        font-size: 126px;
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.065em;
+      }
+
+      .title span {
+        display: block;
+        font-family: "Inter", "Noto Sans SC", sans-serif;
+        font-size: 96px;
+        font-weight: 800;
+        letter-spacing: -0.06em;
+      }
+
+      .summary {
+        max-width: 760px;
+        margin: 20px 0 0;
+        font-size: 24px;
+        line-height: 1.45;
+        color: var(--ink);
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .capsule-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .capsule {
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.38);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .note {
+        max-width: 300px;
+        font-size: 13px;
+        line-height: 1.45;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+        padding: 26px 28px 28px;
+        border-left: 6px solid var(--ink);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(17, 17, 17, 0.035));
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .panel-title {
+        margin: 10px 0 0;
+        font-family: "Inter", "Noto Sans SC", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .panel-copy {
+        margin: 18px 0 0;
+        font-size: 18px;
+        line-height: 1.55;
+        color: var(--ink);
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .stack-item {
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .stack-label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .stack-value {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .mark {
+        position: absolute;
+        right: -42px;
+        bottom: -44px;
+        font-family: "Oswald", sans-serif;
+        font-size: 180px;
+        line-height: 0.85;
+        letter-spacing: -0.02em;
+        color: rgba(17, 17, 17, 0.06);
+        transform: rotate(-90deg);
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="frame">
+      <section class="grid">
+        <div class="left">
+          <div>
+            <p class="meta-row">Agent Skill Repository</p>
+            <div class="headline-wrap">
+              <h1 class="title">
+                INFOCARD
+                <span>SKILLS</span>
+              </h1>
+              <p class="summary">
+                Installable skills for turning source material into editorial-style
+                information cards, screenshot-ready HTML, and ratio-specific visual
+                assets.
+              </p>
+            </div>
+          </div>
+
+          <div class="footer-row">
+            <div class="capsule-group">
+              <span class="capsule">Agent First</span>
+              <span class="capsule">Editorial Layout</span>
+              <span class="capsule">HTML to PNG</span>
+            </div>
+            <p class="note">
+              Current package: editorial-card-screenshot
+            </p>
+          </div>
+        </div>
+
+        <aside class="right">
+          <div>
+            <p class="eyebrow">Included Now</p>
+            <h2 class="panel-title">editorial-card-screenshot</h2>
+            <p class="panel-copy">
+              Natural-language card generation with reusable prompt rules, ratio
+              presets, and rendering helpers packaged as one installable skill.
+            </p>
+          </div>
+
+          <div class="stack">
+            <div class="stack-item">
+              <span class="stack-label">Install Unit</span>
+              <div class="stack-value">skills/editorial-card-screenshot</div>
+            </div>
+            <div class="stack-item">
+              <span class="stack-label">Use Case</span>
+              <div class="stack-value">Dense editorial information cards</div>
+            </div>
+            <div class="stack-item">
+              <span class="stack-label">Output</span>
+              <div class="stack-value">HTML cards and optional PNG capture</div>
+            </div>
+          </div>
+
+          <div class="mark">CARD</div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
