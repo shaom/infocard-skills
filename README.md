@@ -33,6 +33,16 @@ Typical requests:
 
 The shell script in this repository is an implementation detail used by the skill when image capture is needed. It is not the main product surface.
 
+## What To Install
+
+For the current release, the installable skill package is:
+
+- [`skills/editorial-card-screenshot`](./skills/editorial-card-screenshot)
+
+In most agent environments, the correct install unit is the entire skill directory, not an individual file.
+
+If you only copy `SKILL.md`, the skill may lose access to its templates, references, and rendering helper.
+
 ## Included Today
 
 ### `editorial-card-screenshot`
@@ -55,6 +65,60 @@ Included assets:
 - ratio presets: [`skills/editorial-card-screenshot/references/ratios.md`](./skills/editorial-card-screenshot/references/ratios.md)
 - agent descriptor: [`skills/editorial-card-screenshot/agents/openai.yaml`](./skills/editorial-card-screenshot/agents/openai.yaml)
 - canonical prompt spec: [`docs/editorial-card-prompt.md`](./docs/editorial-card-prompt.md)
+
+## Package Contents
+
+For `editorial-card-screenshot`, the package is structured like this:
+
+- `SKILL.md`: the main skill contract and behavior definition
+- `assets/`: starter HTML assets used by the skill
+- `references/`: ratio presets and supporting reference material
+- `scripts/`: helper scripts used internally by the agent when rendering is needed
+- `agents/`: optional agent-specific metadata
+
+If your agent supports skill installation from a local folder or repository path, point it at the full `skills/editorial-card-screenshot` directory.
+
+## Installation
+
+Install the skill package by using your agent's skill installation mechanism and targeting:
+
+```text
+skills/editorial-card-screenshot
+```
+
+If your agent expects files to be copied manually, copy the entire directory, including:
+
+- `SKILL.md`
+- `assets/`
+- `references/`
+- `scripts/`
+- `agents/` if your host supports agent metadata
+
+Do not install just the shell script or just the prompt document. The intended installable unit is the whole skill package.
+
+## Verify Installation
+
+After installation, ask the agent to use the skill explicitly with a simple request such as:
+
+- `Use $editorial-card-screenshot to turn these notes into an editorial info card.`
+- `Use $editorial-card-screenshot to make a 3:4 information card from this text.`
+- `Use $editorial-card-screenshot and give me both the HTML and PNG.`
+
+If installation succeeded, the agent should:
+
+- recognize the skill
+- generate screenshot-ready HTML
+- optionally render a PNG when image output is requested
+
+## Example Usage
+
+Once the skill is installed, typical natural-language requests look like this:
+
+- `Turn this article into an editorial information card.`
+- `Make a portrait 3:4 info card from these notes.`
+- `Summarize this content as a dense magazine-style card.`
+- `Use $editorial-card-screenshot and render a 4:3 PNG card.`
+- `Create the HTML only. I do not need the image.`
 
 ## Repository Structure
 
