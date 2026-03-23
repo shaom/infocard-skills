@@ -16,9 +16,11 @@ Use these presets for editorial cards and covers.
 ## Notes
 
 - Keep the page itself aligned to the target ratio so the screenshot does not need cropping.
+- Use the preset pixel dimensions as the actual design canvas, not only as the browser window size.
 - Prefer warm off-white or paper-like backgrounds for information cards.
 - For `2.35:1` and `5:2`, reduce paragraph length and use fewer but larger blocks.
 - For `3:1`, keep text sparse, protect likely avatar overlap zones, and avoid filling the full width with copy.
-- For `4:3`, prefer asymmetric layouts for dense analytical content so the canvas does not feel horizontally flat.
-- For `3:4`, reduce simultaneous columns and rely more on vertical stacking.
+- For `4:3`, prefer asymmetric layouts or a strong summary band before the list so the canvas does not feel horizontally flat.
+- For `3:4`, do not default to a single stack. Use title bands, insight rows, and mixed-size modules.
+- For `1:1`, avoid four equal tiles. Use one heavier primary block plus supporting blocks.
 - Rebalance the composition for each ratio. Do not treat ratios as simple viewport resizes of one fixed template.
