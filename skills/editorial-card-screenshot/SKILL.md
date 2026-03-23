@@ -113,7 +113,7 @@ When responding to a card-generation request:
 ### `references/ratios.md`
 Open this when you need the exact preset names or capture dimensions.
 
-### `../docs/editorial-card-prompt.md`
+### `references/editorial-card-prompt.md`
 Use this as the canonical prompt spec when the user wants the latest validated editorial-card behavior.
 
 ### `scripts/capture_card.sh`
