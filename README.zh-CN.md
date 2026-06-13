@@ -43,6 +43,12 @@
 - `Summarize this content as a dense magazine-style card.`
 - `Create the HTML only. I do not need the image.`
 
+## 布局展示
+
+同一份原始内容会根据目标画布重新组织，而不是简单缩放。当前支持 `3:4`、`4:3`、`1:1`、`16:9`、`9:16`、`2.35:1`、`3:1` 和 `5:2`。
+
+![Infocard Skills 不同比例布局展示](./docs/assets/layout-showcase-4x3.png)
+
 ## PNG 渲染要求
 
 如果要输出 PNG，当前辅助脚本默认依赖本地 Google Chrome：

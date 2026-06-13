@@ -39,6 +39,12 @@ Typical requests:
 - `Summarize this content as a dense magazine-style card.`
 - `Create the HTML only. I do not need the image.`
 
+## Layout Showcase
+
+The same source content is reorganized for each target canvas instead of being mechanically resized. The skill supports `3:4`, `4:3`, `1:1`, `16:9`, `9:16`, `2.35:1`, `3:1`, and `5:2`.
+
+![Infocard Skills layout showcase](./docs/assets/layout-showcase-4x3.png)
+
 ## Render Requirement
 
 For PNG capture, the current helper expects local Google Chrome at:
