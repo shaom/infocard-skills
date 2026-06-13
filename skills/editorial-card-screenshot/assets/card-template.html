@@ -15,8 +15,6 @@
         --muted: #575757;
         --accent: #111111;
         --tint: rgba(0, 0, 0, 0.03);
-        --canvas-width: 1500px;
-        --canvas-height: 2000px;
         --card-padding: 48px;
       }
 
@@ -30,6 +28,7 @@
         background: var(--paper);
         width: 100%;
         height: 100%;
+        overflow: hidden;
       }
 
       body {
@@ -37,8 +36,8 @@
       }
 
       .frame {
-        width: var(--canvas-width);
-        height: var(--canvas-height);
+        width: 100%;
+        height: 100%;
         display: grid;
         place-items: stretch;
       }
@@ -65,6 +64,41 @@
           radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.8) 0.5px, transparent 0.8px),
           radial-gradient(circle at 80% 40%, rgba(0, 0, 0, 0.7) 0.4px, transparent 0.7px);
         background-size: 8px 8px, 11px 11px;
+      }
+
+      .visual-anchor {
+        position: absolute;
+        right: var(--card-padding);
+        bottom: calc(var(--card-padding) - 18px);
+        z-index: 0;
+        display: grid;
+        justify-items: end;
+        color: rgba(17, 17, 17, 0.1);
+        pointer-events: none;
+      }
+
+      .visual-anchor strong {
+        font-family: "Oswald", "Inter", sans-serif;
+        font-size: clamp(180px, 24vw, 420px);
+        line-height: 0.8;
+        letter-spacing: -0.07em;
+      }
+
+      .visual-anchor span {
+        max-width: 280px;
+        margin-top: 18px;
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .hero,
+      .grid {
+        position: relative;
+        z-index: 1;
       }
 
       .meta {
@@ -108,6 +142,7 @@
         display: grid;
         grid-template-columns: 1.08fr 0.92fr;
         gap: 18px;
+        align-content: stretch;
       }
 
       .panel {
@@ -133,13 +168,72 @@
         font-weight: 700;
       }
 
+      @media (max-aspect-ratio: 4 / 5) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-aspect-ratio: 2 / 1) {
+        .card {
+          grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+          grid-template-rows: 1fr;
+          align-items: stretch;
+          gap: 28px;
+        }
+
+        .hero {
+          align-content: center;
+        }
+
+        .grid {
+          align-content: center;
+        }
+
+        .visual-anchor {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        html,
+        body {
+          width: auto;
+          height: auto;
+          overflow: auto;
+        }
+
+        .frame {
+          width: auto;
+          height: auto;
+        }
+
+        .card {
+          height: auto;
+          min-height: 100vh;
+          padding: 28px 22px;
+        }
+
+        .title {
+          font-size: 52px;
+        }
+
+        .body {
+          font-size: 18px;
+        }
+      }
+
     </style>
   </head>
   <body>
     <main class="frame">
       <article class="card">
+        <aside class="visual-anchor" aria-hidden="true">
+          <strong>01</strong>
+          <span>Replace with a meaningful number, keyword, or short conclusion</span>
+        </aside>
         <section class="hero">
-          <p class="meta">Density / Medium</p>
+          <p class="meta">Density / Low</p>
           <h1 class="title">Replace This Headline</h1>
           <div class="bar"></div>
           <p class="body">

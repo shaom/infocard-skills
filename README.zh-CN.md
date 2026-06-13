@@ -64,6 +64,7 @@ examples/
 
 - [`docs/agent-usage.md`](./docs/agent-usage.md)
 - [`docs/editorial-card-prompt.md`](./docs/editorial-card-prompt.md)
+- [`docs/content-fit.md`](./docs/content-fit.md)
 - [`docs/project-overview.md`](./docs/project-overview.md)
 - [`docs/github-metadata.md`](./docs/github-metadata.md)
 

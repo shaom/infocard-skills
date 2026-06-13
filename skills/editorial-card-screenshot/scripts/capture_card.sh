@@ -66,7 +66,7 @@ mkdir -p "$(dirname "$output_path")"
 
 abs_input_path=$(cd "$(dirname "$input_path")" && pwd)/$(basename "$input_path")
 abs_output_path=$(cd "$(dirname "$output_path")" && pwd)/$(basename "$output_path")
-input_url="file://${abs_input_path}"
+input_url="file://${abs_input_path}#ratio=${ratio_key}"
 
 "$chrome_bin" \
   --headless=new \

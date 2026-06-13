@@ -6,6 +6,7 @@ They are intentionally generic and should be adapted to the user's content inste
 ## Shared Principles
 
 - If the user already provides a title, use it as the main headline by default.
+- Read `content-fit.md` first and choose a skeleton from both density and ratio.
 - Put interpretation and editorial framing into subtitle, summary, or side modules.
 - Do not inject creator branding, avatars, or personal signatures unless explicitly requested.
 - At least one module should feel visually heavy, one medium, and one lighter support block.
@@ -81,3 +82,49 @@ Avoid:
 - Four equal quadrants
 - Tiny typography spread over too many support boxes
 - Large lower whitespace beneath the main modules
+
+## `16:9`
+
+Best for presentation covers, compact explainers, and horizontal summaries.
+
+Recommended pattern:
+- Left hero taking roughly half the width
+- Right structured support area with one medium module and one smaller module
+- Optional thin judgment or source strip
+
+Avoid:
+- Stretching a portrait stack across the width
+- More than five primary-point equivalents
+- A title that leaves the entire right half without a role
+
+## `9:16`
+
+Best for story cards and vertical explainers.
+
+Recommended pattern:
+- Compact cover-style hero
+- One strong anchor or stat strip
+- One dominant middle module
+- Two grouped support modules near the lower section
+- Short footer
+
+Avoid:
+- Repeating many same-height boxes
+- Letting the hero consume most of the height on a dense card
+- Placing the final meaningful content too high on the canvas
+
+## Wide Covers: `2.35:1`, `3:1`, `5:2`
+
+Best for title-led covers, announcements, and one central judgment.
+
+Recommended pattern:
+- One strong headline region
+- One short deck or anchor
+- One compact support cluster or metadata strip
+- For `3:1`, protect likely avatar overlap areas when relevant
+
+Avoid:
+- Full analytical layouts
+- Long paragraphs
+- More than three primary-point equivalents
+- Scaling down a `4:3` grid to fit

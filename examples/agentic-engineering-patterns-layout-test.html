@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic Engineering Patterns Layout Test</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=Oswald:wght@500;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f2f0e9;
+        --ink: #151515;
+        --muted: #62605a;
+        --accent: #e34a32;
+        --dark: #20211f;
+        --tint: rgba(21, 21, 21, 0.045);
+        --pad: 54px;
+        --gap: 22px;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--paper); }
+      body { font-family: "Inter", "Noto Sans SC", sans-serif; color: var(--ink); }
+
+      .card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: var(--pad);
+        display: grid;
+        gap: var(--gap);
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,.32), transparent 45%),
+          var(--paper);
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: .035;
+        background-image:
+          radial-gradient(circle at 20% 20%, #000 0.5px, transparent 0.8px),
+          radial-gradient(circle at 80% 40%, #000 0.4px, transparent 0.7px);
+        background-size: 8px 8px, 11px 11px;
+      }
+
+      .topbar, .hero, .anchor, .main, .closing-band, .footer { position: relative; z-index: 1; }
+      .topbar { display: flex; align-items: center; justify-content: space-between; border-bottom: 4px solid var(--ink); padding-bottom: 12px; }
+      .eyebrow, .ratio, .label { font-size: 15px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+      .ratio, .label { color: var(--muted); }
+      .eyebrow b { color: var(--accent); }
+
+      .hero { display: grid; gap: 12px; align-content: center; }
+      h1 { margin: 0; max-width: 1350px; font-family: "Noto Serif SC", serif; font-size: 78px; line-height: 1.02; letter-spacing: -.055em; }
+      .deck { margin: 0; max-width: 1400px; font-size: 21px; line-height: 1.48; color: #363632; }
+      .byline { margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); }
+      .byline strong { color: var(--ink); }
+
+      .anchor { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 24px; padding: 18px 22px; background: var(--dark); color: #fff; }
+      .anchor-mark { font-family: "Oswald", sans-serif; font-size: 68px; line-height: .85; color: var(--accent); }
+      .anchor p { margin: 0; font-family: "Noto Serif SC", serif; font-size: 28px; line-height: 1.25; }
+
+      .main { min-height: 0; display: grid; grid-template-columns: 1.24fr .76fr; gap: var(--gap); align-items: start; }
+      .primary-stack { display: grid; gap: var(--gap); align-content: start; }
+      .primary-lower { display: grid; grid-template-columns: .82fr 1.18fr; gap: var(--gap); }
+      .panel { min-width: 0; padding: 21px 23px; background: var(--tint); border-top: 6px solid var(--ink); overflow: hidden; }
+      .panel.dark { background: var(--dark); color: #fff; border-top-color: var(--accent); }
+      .panel.accent { background: rgba(227, 74, 50, .09); border-top-color: var(--accent); }
+      .panel h2 { margin: 0 0 12px; font-family: "Noto Serif SC", serif; font-size: 31px; line-height: 1.15; letter-spacing: -.025em; }
+      .panel h3 { margin: 0 0 7px; font-size: 19px; line-height: 1.25; }
+      .panel p, .panel li { font-size: 17px; line-height: 1.48; }
+      .panel p { margin: 0; }
+      .panel ul { margin: 0; padding-left: 1.15em; display: grid; gap: 8px; }
+      .panel .label { display: block; margin-bottom: 9px; }
+
+      .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .compare article { padding: 16px; background: rgba(255,255,255,.42); border-left: 5px solid var(--ink); }
+      .compare article:last-child { border-left-color: var(--accent); }
+      .compare p { font-size: 16px; }
+
+      .principles { display: grid; gap: 10px; }
+      .principle { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+      .principle b { font-family: "Oswald", sans-serif; font-size: 28px; line-height: 1; color: var(--accent); }
+      .principle p { font-size: 16px; line-height: 1.38; }
+
+      .side { min-height: 0; display: grid; gap: var(--gap); align-content: start; }
+      .work-list { display: grid; gap: 10px; }
+      .work-list p { padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.24); }
+      .work-list p:last-child { border-bottom: 0; }
+
+      .collab { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .collab p { padding: 10px 12px; background: rgba(255,255,255,.45); font-size: 15px; font-weight: 700; }
+
+      .quality-grid { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; }
+      .quality-grid p { padding: 9px 0; border-top: 1px solid rgba(21,21,21,.22); font-size: 15px; }
+      .quality-grid strong { color: var(--accent); }
+
+      .big-judgment {
+        display: grid;
+        align-content: space-between;
+        min-height: 250px;
+      }
+      .big-judgment strong {
+        display: block;
+        margin-top: 24px;
+        font-family: "Noto Serif SC", serif;
+        font-size: 42px;
+        line-height: 1.08;
+      }
+      .defense { display: grid; gap: 12px; }
+      .defense p { display: grid; grid-template-columns: 42px 1fr; align-items: start; gap: 10px; }
+      .defense b { font-family: "Oswald", sans-serif; font-size: 29px; line-height: 1; color: var(--accent); }
+
+      .wide-backdrop {
+        position: absolute;
+        z-index: 0;
+        right: 4%;
+        bottom: 2%;
+        font-family: "Oswald", sans-serif;
+        font-size: 150px;
+        line-height: .8;
+        letter-spacing: -.04em;
+        color: rgba(21,21,21,.045);
+        white-space: nowrap;
+      }
+
+      .wide-notes { grid-column: 1 / -1; margin-top: 13px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+      .wide-notes span { display: inline-block; margin-right: 18px; font-size: 14px; font-weight: 700; letter-spacing: .06em; }
+
+      .closing-band {
+        display: none;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 20px;
+        padding: 14px 18px;
+        border: 4px solid var(--ink);
+      }
+      .closing-band b { font-family: "Oswald", sans-serif; font-size: 42px; line-height: 1; color: var(--accent); }
+      .closing-band p { margin: 0; font-size: 16px; line-height: 1.4; }
+
+      .footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 4px solid var(--ink); padding-top: 12px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+      .footer strong { color: var(--ink); }
+
+      .only-wide, .only-portrait, .only-full { display: none; }
+
+      body[data-ratio="4:3"] .card {
+        grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      }
+
+      body[data-ratio="1:1"] .card {
+        --pad: 50px;
+        --gap: 18px;
+        grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      }
+      body[data-ratio="1:1"] h1 { font-size: 70px; }
+      body[data-ratio="1:1"] .main { grid-template-columns: 1.08fr .92fr; }
+      body[data-ratio="1:1"] .panel { padding: 18px 20px; }
+      body[data-ratio="1:1"] .panel p, body[data-ratio="1:1"] .panel li { font-size: 16px; }
+      body[data-ratio="1:1"] .primary-lower { grid-template-columns: 1fr; }
+      body[data-ratio="1:1"] .big-judgment { min-height: auto; }
+      body[data-ratio="1:1"] .closing-band { display: grid; }
+
+      body[data-ratio="3:4"] .card,
+      body[data-ratio="9:16"] .card {
+        --pad: 46px;
+        --gap: 18px;
+        grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      }
+      body[data-ratio="3:4"] h1, body[data-ratio="9:16"] h1 { font-size: 68px; }
+      body[data-ratio="3:4"] .deck, body[data-ratio="9:16"] .deck { font-size: 18px; }
+      body[data-ratio="3:4"] .main, body[data-ratio="9:16"] .main {
+        grid-template-columns: 1fr;
+        align-content: start;
+      }
+      body[data-ratio="3:4"] .primary-stack, body[data-ratio="9:16"] .primary-stack { gap: var(--gap); }
+      body[data-ratio="3:4"] .primary-lower, body[data-ratio="9:16"] .primary-lower { grid-template-columns: 1fr 1fr; }
+      body[data-ratio="3:4"] .side, body[data-ratio="9:16"] .side {
+        grid-template-columns: 1fr 1fr;
+        align-content: start;
+      }
+      body[data-ratio="3:4"] .side .panel:last-child, body[data-ratio="9:16"] .side .panel:last-child { grid-column: 1 / -1; }
+      body[data-ratio="3:4"] .compare, body[data-ratio="9:16"] .compare { grid-template-columns: 1fr 1fr; }
+      body[data-ratio="3:4"] .only-portrait, body[data-ratio="9:16"] .only-portrait { display: block; }
+
+      body[data-ratio="9:16"] .card { --pad: 38px; --gap: 14px; }
+      body[data-ratio="9:16"] h1 { font-size: 60px; }
+      body[data-ratio="9:16"] .anchor { padding: 14px 17px; }
+      body[data-ratio="9:16"] .anchor p { font-size: 24px; }
+      body[data-ratio="9:16"] .panel { padding: 16px 18px; }
+      body[data-ratio="9:16"] .panel h2 { font-size: 27px; }
+      body[data-ratio="9:16"] .panel p, body[data-ratio="9:16"] .panel li { font-size: 15px; line-height: 1.38; }
+      body[data-ratio="9:16"] .principle:nth-child(n+5) { display: none; }
+      body[data-ratio="9:16"] .quality-grid { grid-template-columns: 1fr; gap: 2px; }
+      body[data-ratio="9:16"] .quality-grid p:nth-child(n+5) { display: none; }
+      body[data-ratio="9:16"] .big-judgment { min-height: auto; }
+      body[data-ratio="9:16"] .big-judgment strong { font-size: 30px; }
+      body[data-ratio="9:16"] .defense p { grid-template-columns: 34px 1fr; }
+      body[data-ratio="9:16"] .closing-band { display: grid; }
+      body[data-ratio="9:16"] .footer { font-size: 12px; }
+
+      body[data-ratio="16:9"] .card {
+        --pad: 48px;
+        --gap: 20px;
+        grid-template-columns: 1.05fr .95fr;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+      }
+      body[data-ratio="16:9"] .topbar, body[data-ratio="16:9"] .footer { grid-column: 1 / -1; }
+      body[data-ratio="16:9"] .hero { padding-right: 25px; }
+      body[data-ratio="16:9"] h1 { font-size: 75px; }
+      body[data-ratio="16:9"] .anchor { display: none; }
+      body[data-ratio="16:9"] .main { grid-template-columns: 1fr; }
+      body[data-ratio="16:9"] .main > .panel:first-child { display: none; }
+      body[data-ratio="16:9"] .side { grid-template-rows: 1fr 1fr; }
+      body[data-ratio="16:9"] .side .panel:last-child { display: none; }
+
+      body[data-family="wide"] .card {
+        --pad: 42px;
+        --gap: 18px;
+        grid-template-columns: 1.35fr .65fr;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+      }
+      body[data-family="wide"] .topbar, body[data-family="wide"] .footer { grid-column: 1 / -1; }
+      body[data-family="wide"] .hero { align-content: center; padding-right: 26px; }
+      body[data-family="wide"] h1 { font-size: 64px; max-width: 1000px; }
+      body[data-family="wide"] .deck { font-size: 18px; }
+      body[data-family="wide"] .anchor { align-self: center; padding: 20px 24px; }
+      body[data-family="wide"] .anchor p { font-size: 25px; }
+      body[data-family="wide"] .main { display: none; }
+      body[data-family="wide"] .only-wide { display: block; }
+      body[data-family="wide"] .footer { font-size: 12px; padding-top: 8px; }
+
+      body[data-ratio="3:1"] .card { --pad: 34px 42px; --gap: 12px; }
+      body[data-ratio="3:1"] .topbar { padding-bottom: 8px; }
+      body[data-ratio="3:1"] h1 { font-size: 57px; }
+      body[data-ratio="3:1"] .deck { font-size: 16px; }
+      body[data-ratio="3:1"] .anchor { padding: 14px 18px; }
+      body[data-ratio="3:1"] .anchor-mark { font-size: 55px; }
+      body[data-ratio="3:1"] .anchor p { font-size: 21px; }
+      body[data-ratio="3:1"] .byline { display: none; }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="wide-backdrop only-wide">WRITE · RUN · VERIFY</div>
+      <header class="topbar">
+        <span class="eyebrow"><b>Strongly Recommended</b> / Reading Notes</span>
+        <span class="ratio" id="ratio-label">Layout Test</span>
+      </header>
+
+      <section class="hero">
+        <h1>再次强烈推荐「Agentic Engineering Patterns」</h1>
+        <p class="deck">Simon Willison 持续撰写的实践指南：如何用好 Claude Code、Codex 这类能写代码、也能执行代码的 coding agent，拿到可靠、可维护的结果。</p>
+        <p class="byline"><strong>@simonw</strong> · 2026 年 2 月起撰写 · 每周约新增 1–2 章 · 仍在演进</p>
+      </section>
+
+      <section class="anchor">
+        <div class="anchor-mark">≠</div>
+        <p>Agentic Engineering 不是 Vibe Coding。写代码变便宜了，写好代码并没有。</p>
+        <div class="wide-notes only-wide">
+          <span>DEFINE THE PROBLEM</span>
+          <span>RUN THE CODE</span>
+          <span>VERIFY THE RESULT</span>
+        </div>
+      </section>
+
+      <section class="main">
+        <div class="primary-stack">
+          <section class="panel">
+            <span class="label">Boundary / 核心边界</span>
+            <h2>专业工程师用 Agent 放大能力，而不是跳过理解与审查</h2>
+            <div class="compare">
+              <article>
+                <h3>Vibe Coding</h3>
+                <p>常用于非程序员原型；代码未审查、偏原型级；人几乎不参与代码理解。</p>
+              </article>
+              <article>
+                <h3>Agentic Engineering</h3>
+                <p>服务专业工程；代码经过审查、测试并可上线；人负责定义问题、验证结果、持续改进 harness。</p>
+              </article>
+            </div>
+            <p class="only-portrait" style="margin-top:12px"><strong>Agent 的定义：</strong>在循环中调用工具以达成目标。Coding agent 的关键差异，是它能执行代码并迭代到“确实能跑”。</p>
+            <div class="quality-grid">
+              <p><strong>01</strong> 能跑，并且被证明能跑</p>
+              <p><strong>02</strong> 解决对的问题</p>
+              <p><strong>03</strong> 处理错误路径</p>
+              <p><strong>04</strong> 简洁、可维护</p>
+              <p><strong>05</strong> 有测试与合适文档</p>
+              <p><strong>06</strong> 留出演进空间</p>
+              <p><strong>07</strong> 满足安全与可观测性要求</p>
+            </div>
+          </section>
+
+          <div class="primary-lower">
+            <section class="panel dark big-judgment">
+              <div>
+                <span class="label">New Constraint</span>
+                <h2>代码的成本结构已经改变</h2>
+                <p>旧习惯建立在“代码昂贵”之上；Agent 让实现、重构、测试与文档可以并行推进。</p>
+              </div>
+              <strong>质量标准<br />不能随成本下降。</strong>
+            </section>
+
+            <section class="panel">
+              <span class="label">Testing / 三层防线</span>
+              <h2>不是生成代码，而是证明结果</h2>
+              <div class="defense">
+                <p><b>01</b><span><strong>TDD：</strong>先写测试，确认失败，再实现至通过。</span></p>
+                <p><b>02</b><span><strong>全量测试：</strong>新会话先建立测试意识，发现回归。</span></p>
+                <p><b>03</b><span><strong>手动验证：</strong>用真实命令与浏览器留下运行证据。</span></p>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <aside class="side">
+          <section class="panel dark">
+            <span class="label">Human Work Moves Up</span>
+            <h2>人的工作没有消失，而是上移</h2>
+            <div class="work-list">
+              <p>决定写什么代码，以及接受哪些权衡</p>
+              <p>提供工具与足够细的规格</p>
+              <p>验证结果是否稳健可信</p>
+              <p>把经验写回指令与 harness</p>
+            </div>
+          </section>
+
+          <section class="panel accent">
+            <span class="label">Five Principles</span>
+            <h2>五大原则层</h2>
+            <div class="principles">
+              <div class="principle"><b>01</b><p><strong>定义边界：</strong>能写能跑，但必须由人定目标、给工具、验结果。</p></div>
+              <div class="principle"><b>02</b><p><strong>接受新约束：</strong>代码近乎免费，好代码仍然昂贵。</p></div>
+              <div class="principle"><b>03</b><p><strong>囤积解法：</strong>积累带可运行证明的代码与例子。</p></div>
+              <div class="principle"><b>04</b><p><strong>提高质量：</strong>让后台 agent 处理简单但耗时的清理。</p></div>
+              <div class="principle"><b>05</b><p><strong>严守反模式：</strong>绝不提交自己没审过的 PR。</p></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <span class="label">Practice</span>
+            <h2>更好的协作方式</h2>
+            <div class="collab">
+              <p>先懂工具循环</p>
+              <p>把 Git 当时间机器</p>
+              <p>用 Subagent 节省上下文</p>
+              <p>TDD + 全量测试 + 手动验证</p>
+              <p>留下真实运行证据</p>
+              <p>主动偿还认知债</p>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="closing-band">
+        <b>READ</b>
+        <p><strong>主动偿还认知债：</strong>Agent 产出的代码不能成为黑盒。用线性导读、真实引用与可交互解释，持续理解自己维护的系统。</p>
+      </section>
+
+      <footer class="footer">
+        <span><strong>新习惯：</strong>当直觉说“不值得做”时，可以让异步 agent 先试一下。</span>
+        <span>simonwillison.net/guides/agentic-engineering-patterns/</span>
+      </footer>
+    </main>
+
+    <script>
+      const presets = [
+        ["3:4", 1500 / 2000],
+        ["4:3", 2000 / 1500],
+        ["1:1", 1],
+        ["16:9", 1920 / 1080],
+        ["9:16", 1080 / 1920],
+        ["2.35:1", 2.35],
+        ["3:1", 3],
+        ["5:2", 2.5],
+      ];
+      const requested = new URLSearchParams(location.hash.slice(1)).get("ratio");
+      const current = innerWidth / innerHeight;
+      const ratio = requested || presets.reduce((best, item) =>
+        Math.abs(item[1] - current) < Math.abs(best[1] - current) ? item : best
+      )[0];
+      document.body.dataset.ratio = ratio;
+      document.body.dataset.family = ["2.35:1", "3:1", "5:2"].includes(ratio) ? "wide" : "card";
+      document.getElementById("ratio-label").textContent = `${ratio} / High-density test`;
+    </script>
+  </body>
+</html>
